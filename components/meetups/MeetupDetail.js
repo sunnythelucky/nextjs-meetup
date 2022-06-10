@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Image from "next/image";
 import meetupImage from "../../public/Munich.jpeg";
 import classes from "./MeetupDetail.module.css";
