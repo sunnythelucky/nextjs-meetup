@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 import meetupImage from "../public/Munich.jpeg";
 
@@ -40,23 +39,29 @@ const DUMMY_MEETUPS = [
 	},
 ];
 
-const HomePage = () => {
-	const [loadedMeetups, setLoadedMeetups] = useState([]);
+// export async function getServerSideProps(context) {
+// 	const req = context.req;
+// 	const res = context.res;
+// 	// fetch data from an API (e.g a database, credentials, etc)
+// 	// because it's only rendered on the server
+// 	return {
+// 		props: {
+// 			meetups: DUMMY_MEETUPS,
+// 		},
+// 	};
+// }
 
-	useEffect(() => {
-		// send a http request and fetch data
-		setLoadedMeetups(DUMMY_MEETUPS);
-	}, []);
-
-	return <MeetupList meetups={loadedMeetups} />;
+const HomePage = (props) => {
+	return <MeetupList meetups={props.meetups} />;
 };
 
 export async function getStaticProps() {
-	
+	// Fetch necessary data for the blog post using API
 	return {
 		props: {
-			initialData: DUMMY_MEETUPS,
+			meetups: DUMMY_MEETUPS,
 		},
+		// revalidate: 3600,
 	};
 }
 
