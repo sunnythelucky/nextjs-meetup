@@ -61,8 +61,9 @@ const HomePage = (props) => {
 
 //only runs in server or in the build time but never in the client
 export async function getStaticProps() {
-	// Fetch necessary data for the blog post using API
+
 	const client = await MongoClient.connect(URL);
+
 	const db = client.db();
 
 	const meetupsCollection = db.collection("meetups");

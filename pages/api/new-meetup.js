@@ -10,6 +10,7 @@ async function handler(req, res) {
 
 			const URL = "<your server URL>";
 			const client = await MongoClient.connect(URL);
+
 			const db = client.db();
 
 			const meetupsCollection = db.collection("meetups");
